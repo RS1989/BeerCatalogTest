@@ -1,0 +1,12 @@
+.header-row{
+    background-color: #0069d9;
+    border-color: #0062cc;
+    color: #ffffff;
+    min-height: 25px; 
+}
+
+.row-border{
+    border-bottom:1px solid #cccccc;
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+}

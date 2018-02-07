@@ -62,7 +62,7 @@ export class AppComponent {
 
   pageChanged(page: any) {
     this.param.page = page;
-    if (!this.param.query) {
+    if (this.param.query) {
       this.searchBeers();
     } else {
       this.getBeers();
@@ -102,7 +102,11 @@ export class AppComponent {
         this.param.withLocations = 'N';
       }
     }
-    this.searchBeers();
+    if (this.param.query) {
+      this.searchBeers();
+    } else {
+      this.getBeers();
+    }
   }
 
 }
