@@ -1,0 +1,63 @@
+<div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Type to search: </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <input type="text" [(ngModel)]="param.query"/>
+            <a (click)="searchClick()"><i class="fas fa-search"></i></a>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" [ngModel]="checkbox.withBreweriesCheckingModel" 
+                (ngModelChange)="onCheckBoxChange($event,'withBreweries')">Have brewberies</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" [ngModel]="checkbox.withSocialAccountsCheckingModel" 
+                (ngModelChange)="onCheckBoxChange($event,'withSocialAccounts')">Have social account</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="checkbox" >
+              <label>
+                <input type="checkbox" [ngModel]="checkbox.withIngredientsCheckingModel" 
+                (ngModelChange)="onCheckBoxChange($event,'withIngredients')">Have ingridients</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="checkbox" >
+              <label>
+                <input type="checkbox" [ngModel]="checkbox.withLocationsCheckingModel" 
+                (ngModelChange)="onCheckBoxChange($event,'withLocations')">Have locations</label>
+            </div>
+          </div>
+         </div>
+        <div class="row">
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Name</div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Description</div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">ABV</div>
+        </div>
+        <div class="row" *ngFor="let beer of beers?.data | paginate: {
+          itemsPerPage: 50,
+          currentPage: beers?.currentPage,
+          totalItems: beers?.totalResults
+        }">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <a  (click)="showDetail(beer)">{{beer?.nameDisplay}}</a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">{{beer?.description}}</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">{{beer?.abv}}</div>
+            <div *ngIf="beer.showDetail" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <app-beer-detail id="{{beer?.id}}"  ></app-beer-detail>
+            </div>
+        </div>        
+      </div>
+
+     

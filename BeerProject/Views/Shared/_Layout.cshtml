@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    @*@Styles.Render("~/Content/Styles")  
+    @Scripts.Render("~/Script/Bundles")*@
+</head>
+<body>
+
+    <app-root class="container body-content">
+        <div app-root></div>
+        
+        <script src="~/app/beer-library/dist/inline.bundle.js"></script>
+        <script src="~/app/beer-library/dist/polyfills.bundle.js"></script>
+        <script src="~/app/beer-library/dist/styles.bundle.js"></script>
+        <script src="~/app/beer-library/dist/vendor.bundle.js"></script>
+        <script src="~/app/beer-library/dist/main.bundle.js"></script>
+
+        @RenderBody()
+
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+</body>
+</html>
